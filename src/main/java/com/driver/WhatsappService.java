@@ -7,22 +7,27 @@ import java.util.*;
     @Service
     public class WhatsappService {
 
-        WhatsappRepository whatsappRepository =new WhatsappRepository();
+        WhatsappRepository whatsappRepository = new WhatsappRepository() ;
+        public boolean isNewUser(String mobile) {
+            return whatsappRepository.isNewUser(mobile);
+        }
 
         public String createUser(String Name,String Mobile) throws Exception {
-
-            return whatsappRepository.createUser(Name,Mobile);
-
+           return whatsappRepository.createUser(Name,Mobile);
         }
+
 
         public Group createGroup(List<User> users){
 
             return whatsappRepository.createGroup(users);
         }
 
+
+
         public int createMessage(String content){
             return whatsappRepository.createMessage(content);
         }
+
 
         public int sendMessage(Message message, User sender, Group group) throws Exception{
             //Throw "Group does not exist" if the mentioned group does not exist
@@ -31,6 +36,7 @@ import java.util.*;
 
             return whatsappRepository.sendMessage(message, sender, group);
         }
+
 
         public String changeAdmin(User approver, User user, Group group) throws Exception{
             //Throw "Group does not exist" if the mentioned group does not exist
@@ -41,6 +47,7 @@ import java.util.*;
             return whatsappRepository.changeAdmin(approver, user, group);
         }
 
+/*
         public int removeUser(User user) throws Exception{
             //This is a bonus problem and does not contains any marks
             //A user belongs to exactly one group
@@ -52,6 +59,7 @@ import java.util.*;
             return whatsappRepository.removeUser(user);
         }
 
+
         public String findMessage(Date start, Date end, int K) throws Exception{
             //This is a bonus problem and does not contains any marks
             // Find the Kth latest message between start and end (excluding start and end)
@@ -60,4 +68,5 @@ import java.util.*;
             return whatsappRepository.findMessage(start, end, K);
         }
 
+*/
     }
